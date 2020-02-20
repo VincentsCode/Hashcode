@@ -1,2 +1,2 @@
-# Hashcode
-Collection of Hashcode-Code
+# HashCode
+[HashCode Scoreboard](https://hashcodejudge.withgoogle.com/scoreboard)
