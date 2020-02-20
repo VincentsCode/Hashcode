@@ -11,7 +11,6 @@ if len(sys.argv) < 2:
 else:
 	options = sys.argv[1:]
 
-# noinspection PyShadowingBuiltins
 def print(*args):
     print_string = f"[{Fore.CYAN}" + datetime.now().strftime('%H:%M:%S.%f') + f"{Style.RESET_ALL}] " + " ".join(map(str, args)).replace("\n", "")
 
@@ -45,7 +44,7 @@ for chosen in options:
 		print(f"[{Fore.GREEN}+{Style.RESET_ALL}]", "Generating options")
 		order_pizza_types = []
 		current_max = 0
-		for L in range(0, len(pizza_types.keys())+1):
+		for L in range(0, len(pizza_types.keys())+1):  # split this up into threads
 			for itm in itertools.combinations(pizza_types.keys(), L):
 				res_sum = 0
 				for key in itm:
