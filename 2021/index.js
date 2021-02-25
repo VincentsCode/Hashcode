@@ -30,6 +30,7 @@ const dataContent = content.slice(1, content.length-1).map(x => x.split(" "))
 
 // The next S lines contain descriptions of streets.
 var streets = []
+var intersections = {}
 for (var i = 0; i < S; i++) {
 	// Each line contains:
 	// two integers B and E (0 ≤ B < I , 0 ≤ E < I ) - the intersections at the start and the end of the street, respectively,
@@ -46,6 +47,34 @@ for (var i = 0; i < S; i++) {
 		name: name,
 		L: L
 	})
+
+	if (!(B in intersections)) {
+		intersections[B] = {
+			in: [],
+			out: [
+				[name, L]
+			],
+		}
+	} else {
+		intersections[B].out.push([name, L])
+	}
+
+	if (!(E in intersections)) {
+		intersections[E] = {
+			in: [
+				[name, L]
+			],
+			out: [],
+		}
+	} else {
+		intersections[E].in.push([name, L])
+	}
+}
+
+for (iId in intersections) {
+	console.log("I>", iId)
+	console.log("I> I", intersections[iId].in)
+	console.log("I> O", intersections[iId].out)
 }
 
 // The next V lines describe the paths of each car. Each line contains:
@@ -64,14 +93,52 @@ for (var i = S; i < V+S; i++) {
 }
 
 // got data
-// console.log(D, I, S, V, F)
-// console.log(streets)
-// console.log(paths)
+console.log(D, I, S, V, F)
 
 // process data
+schedules = []
+
+// result sample:
+schedules = [
+	{
+		intersectionId: "intersectionIdSample",
+		streetSchedules: [
+			{
+				name: "asdf",
+				time: 1,
+			},
+			{
+				name: "asdf2",
+				time: 2,
+			}
+		]
+	}
+]
 
 
+// simulate
+var intersectionStates = {}
+var carStates = paths.map(x => x.streets[0])
+var scheduleState = schedules.slice(0)
+for (var tick = 0; tick < D; tick++) {
+	for (var i = scheduleState.length - 1; i >= 0; i--) {
+		const sched = scheduleState[i]
+	}
 
+
+}
+
+// create out data
+outData = schedules.length + "\n"
+for (var i = 0; i < schedules.length; i++) {
+	const sched = schedules[i];
+	outData += sched.intersectionId + "\n"
+	outData += sched.streetSchedules.length + "\n"
+	for (var y = 0; y < sched.streetSchedules.length; y++) {
+		const streetSched = sched.streetSchedules[y]
+		outData += streetSched.name + " " + streetSched.time + "\n"
+	}
+}
 
 // write data
-fs.writeFileSync(outDir + outFile, 'test')
+fs.writeFileSync(outDir + outFile, outData)
