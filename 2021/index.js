@@ -92,6 +92,47 @@ for (var i = S; i < V+S; i++) {
 	})
 }
 
+// TODO: thos two functions can be improved - with alreadyCalculated[]
+
+function getIngoingStreets(intersection) {
+	var result = [];
+
+	for (var i = 0; i < streets.length; i++) {
+		if (streets[i].E === intersection) {
+			result.push(streets[i])
+		}
+	}
+
+	return result;
+}
+
+function getOutgoingStreets(intersection) {
+	var result = [];
+
+	for (var i = 0; i < streets.length; i++) {
+		if (streets[i].B === intersection) {
+			result.push(streets[i])
+		}
+	}
+
+	return result;
+}
+
+var validPaths = [];
+var currentTimestamp = 0;
+var maxTimestamp = D;
+
+for (var i = 0; i > paths.length; i++) {
+	var path = paths[i]
+
+	validPaths.Push({
+		isValid = true,
+		currentTime = 0,
+		currentStreet = path.streets[0]
+	})
+}
+
+
 // got data
 console.log(D, I, S, V, F)
 
