@@ -28,6 +28,8 @@ const F = headerContent[4]
 
 const dataContent = content.slice(1, content.length-1).map(x => x.split(" "))
 
+console.log(D, I, S, V, F)
+
 // The next S lines contain descriptions of streets.
 var streets = []
 for (var i = 0; i < S; i++) {
@@ -63,8 +65,34 @@ for (var i = S; i < V+S; i++) {
 	})
 }
 
+function getIngoingStreets(intersection) {
+	var result = [];
+
+	for (var i = 0; i < streets.length; i++) {
+		if (streets[i].E === intersection) {
+			result.push(streets[i])
+		}
+	} 
+
+	return result;
+}
+
+function getOutgoingStreets(intersection) {
+	var result = [];
+
+	for (var i = 0; i < streets.length; i++) {
+		if (streets[i].B === intersection) {
+			result.push(streets[i])
+		}
+	} 
+
+	return result;
+}
+
+console.log(getIngoingStreets(1))
+console.log(getOutgoingStreets(1))
+
 // got data
-// console.log(D, I, S, V, F)
 // console.log(streets)
 // console.log(paths)
 
