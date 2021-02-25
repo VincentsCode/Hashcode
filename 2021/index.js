@@ -126,9 +126,9 @@ for (var i = 0; i > paths.length; i++) {
 	var path = paths[i]
 
 	validPaths.Push({
-		isValid = true,
-		currentTime = 0,
-		currentStreet = path.streets[0]
+		isValid: true,
+		currentTime: 0,
+		currentStreet: path.streets[0]
 	})
 }
 
