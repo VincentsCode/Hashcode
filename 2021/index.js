@@ -39,7 +39,7 @@ for (var i = 0; i < S; i++) {
 	const E = parseInt(dataContent[i][1])
 	const name = dataContent[i][2]
 	const L = parseInt(dataContent[i][3])
-	// console.log(name, "\t", B, "=>", E, "D:", L)
+	console.log("S>", B, "=>", E, "L:", L, "-", name)
 	streets.push({
 		B: B,
 		E: E,
@@ -56,7 +56,7 @@ for (var i = S; i < V+S; i++) {
 	// 		The car stas at the end of the first street (i.e. it waits for the green light to move to the ext street) and follows the path until the end of the last street. The path of a car is always valid, i.e. the streets will be connected by intersections.
 	const P = parseInt(dataContent[i][0])
 	const streets = dataContent[i].slice(1)
-	// console.log(P, streets)
+	console.log("P>", P, "=", streets)
 	paths.push({
 		P: P,
 		streets: streets
@@ -64,9 +64,9 @@ for (var i = S; i < V+S; i++) {
 }
 
 // got data
-console.log(D, I, S, V, F)
-console.log(streets)
-console.log(paths)
+// console.log(D, I, S, V, F)
+// console.log(streets)
+// console.log(paths)
 
 // process data
 
